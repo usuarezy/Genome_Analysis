@@ -1,0 +1,139 @@
+---
+title: 'Project Data Overview'
+subtitle: 'Homework 2'
+author: 
+- Louis Coussement
+- Menno van Damme
+date: 2022-2023
+output:
+  html_document:
+    df_print: paged
+    toc: true
+  pdf_document:
+    dev: png
+    toc: true
+header-includes: \setlength{\emergencystretch}{3em}
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.align = 'center')
+knitr::opts_chunk$set(out.width = '60%')
+knitr::opts_chunk$set(fig.width=12, fig.height=8)
+
+library("ArrayExpress")
+library("arrayQualityMetrics")
+library("ggplot2")
+library("limma")
+library("oligo")
+library("siggenes")
+library("affy")
+library("pd.huex.1.0.st.v2")
+library("RSQLite")
+library("DBI")
+library("htmltools")
+library("biomaRt")
+library("tximport")
+```
+
+# Purpose of this homework
+
+The purpose of this homework is to present a clear and complete overview of the datasets you will be analysing for your project, which is useful to identify and solve problems early on. Moreover, part of the results can be re-used for your executive summary. Note that results presented here are not necessarily final: you may still opt to perform modifications to your preprocessing pipeline, design (samples included) etc. for your final report (i.e. presentation & executive summary). 
+
+For this assignment we ask you to do the following:
+
+- Present some general info on your datasets
+- Present quality control (QC) on your raw sequencing files
+- Load in the data and present the intensity/count/pseudocount data
+
+If you prefer to align your sequencing data yourself (which is highly appreciated), you will already need to do so for this homework. However, since you already have to present QC results for the raw sequencing data, alignment is only a small additional effort (highly similar to what we performed in the practical session).
+
+In order to complete this task you can find a R markdown template via Ufora and also a filled out example. Upon completion of filling out the template, you can upload a knitted html file (best saved as a zip file in order to preserve html structure) via the assignment functionality on Ufora. **Note that one submission per group is sufficient!**
+
+# Project assignment
+
+You can find the project assignment via Ufora.
+
+# Group info
+
+Group number: 
+
+Group members: - - -
+
+Group topic: 
+
+We used the complete datasets/a subset of the datasets (in case of the latter explain why!)
+
+```{r }
+table_general_info <- rbind(c("",""),
+                            c(0,0),
+                            c(0,0))
+colnames(table_general_info) <- c("Microarray Data","RNAseq Data")
+rownames(table_general_info) <- c("Accesion ID","Number of Samples (original)",
+                                  "Number of Samples (analysed)")
+
+# Link to data Microarray
+# 
+# Link to data RNAseq
+# 
+
+print(table_general_info)
+```
+
+# Microarray data
+
+## General info
+
+Microarray type: 
+
+## Intensity values
+
+Read in your microarray data and display the head and dimensions of the intensity value matrix.
+
+```{r}
+
+```
+
+## Sample annotation
+
+Provide basic sample annotation, including the phenotype of interest and relevant other features (e.g. cofounders). Note that this statement is not final, if during analysis you would drop a cofounder, comparison or add one this is no problem, just try to define an initial goal of your analysis.
+
+```{r}
+
+```
+
+# Sequencing data
+
+## General info
+
+Read length: 
+
+Single/paired end sequencing: 
+
+Platform used: 
+
+## Quality control and mapping statistics
+
+Add the multiqc report using `htmltools::includeHTML`. Hint: you can remove the navigation bar on the left by opening the html file > closing the bar > saving the html file. This will remove the indentation in your final html file. In case you start from count data, we still ask you to download (a representative part) of the fastq data to obtain a first impression of the data quality.
+
+```{r, echo=FALSE}
+
+```
+
+If you did not perform (pseudo-)alignment yourself, you can include only the quality control data in the multiqc report
+
+## Sample annotation
+
+Provide basic sample annotation, including the phenotype of interest and relevant other features (e.g. cofounders). Note that this statement is not final, if during analysis you would drop a cofounder, comparison or add one this is no problem, just try to define an initial goal of your analysis.
+
+```{r}
+
+```
+
+## (Pseudo)Count table
+
+Read in your count data or combine your kallisto output to combine your pseudocount data (via tximport) and display the head and dimensions of your count data object.
+
+```{r}
+
+```
+
