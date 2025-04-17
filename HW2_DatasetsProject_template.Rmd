@@ -89,8 +89,19 @@ Microarray type:
 
 Read in your microarray data and display the head and dimensions of the intensity value matrix.
 
-```{r}
+```{r load-data-raw, message=TRUE}
+library(oligo)
 
+# Set the path to the folder containing all CEL filesL
+cel_dir <- "C:/Users/Emmanuel/OneDrive - UGent/Documents/Genome analysis/HW2/GSE50772_RAW/GSE50772_RAW"
+celfiles <- list.celfiles(cel_dir, full.names = TRUE)
+
+# Load the raw microarray data
+data.raw <- read.celfiles(celfiles)
+
+# Preview the first few rows of raw expression values
+dim(exprs(data.raw))
+head(exprs(data.raw))
 ```
 
 ## Sample annotation
@@ -98,7 +109,11 @@ Read in your microarray data and display the head and dimensions of the intensit
 Provide basic sample annotation, including the phenotype of interest and relevant other features (e.g. cofounders). Note that this statement is not final, if during analysis you would drop a cofounder, comparison or add one this is no problem, just try to define an initial goal of your analysis.
 
 ```{r}
-
+BiocManager::install("GEOquery")
+library(GEOquery)
+geo <- getGEO(GEO = "GSE50772")[[1]]
+pheno <- pData(geo)
+head(pheno)
 ```
 
 # Sequencing data
