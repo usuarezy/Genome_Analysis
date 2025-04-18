@@ -122,7 +122,7 @@ head(pheno)
 
 Read length: 
 
-Single/paired end sequencing: 
+Single/paired end sequencing: Illumina HiSeq 2500 and Illumina NextSeq 500 (! batch effect)
 
 Platform used: 
 
