@@ -34,7 +34,6 @@ library("htmltools")
 library("biomaRt")
 library("tximport")
 ```
-
 # Purpose of this homework
 
 The purpose of this homework is to present a clear and complete overview of the datasets you will be analysing for your project, which is useful to identify and solve problems early on. Moreover, part of the results can be re-used for your executive summary. Note that results presented here are not necessarily final: you may still opt to perform modifications to your preprocessing pipeline, design (samples included) etc. for your final report (i.e. presentation & executive summary). 
@@ -63,18 +62,19 @@ Group topic:
 
 We used the complete datasets/a subset of the datasets (in case of the latter explain why!)
 
+
 ```{r }
-table_general_info <- rbind(c("",""),
-                            c(0,0),
+table_general_info <- rbind(c("GSE50772","GSE122459"),
+                            c(81,26),
                             c(0,0))
 colnames(table_general_info) <- c("Microarray Data","RNAseq Data")
 rownames(table_general_info) <- c("Accesion ID","Number of Samples (original)",
                                   "Number of Samples (analysed)")
 
 # Link to data Microarray
-# 
+# https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE50772
 # Link to data RNAseq
-# 
+# https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE122459
 
 print(table_general_info)
 ```
@@ -83,7 +83,7 @@ print(table_general_info)
 
 ## General info
 
-Microarray type: 
+Microarray type: Affymetrix Human Genome U133 Plus 2.0 Array
 
 ## Intensity values
 
