@@ -141,7 +141,47 @@ If you did not perform (pseudo-)alignment yourself, you can include only the qua
 Provide basic sample annotation, including the phenotype of interest and relevant other features (e.g. cofounders). Note that this statement is not final, if during analysis you would drop a cofounder, comparison or add one this is no problem, just try to define an initial goal of your analysis.
 
 ```{r}
+# Creating metadata for 26 samples with GSM IDs
+MetaData_RNA <- matrix(nrow = 26, ncol = 1)
 
+rownames(MetaData_RNA) <- c(
+  "GSM3466767", "GSM3466768", "GSM3466769", "GSM3466770", "GSM3466771",
+  "GSM3466772", "GSM3466773", "GSM3466774", "GSM3466775", "GSM3466776",
+  "GSM3466777", "GSM3466778", "GSM3466779", "GSM3466780", "GSM3466781",
+  "GSM3466782", "GSM3466783", "GSM3466784", "GSM3466785", "GSM3466786",
+  "GSM3466787", "GSM3466788", "GSM3466789", "GSM3466790", "GSM3466791", "GSM3466792"
+)
+
+colnames(MetaData_RNA) <- c("condition")
+
+MetaData_RNA[1,1] <- "SLE"
+MetaData_RNA[2,1] <- "SLE"
+MetaData_RNA[3,1] <- "SLE"
+MetaData_RNA[4,1] <- "SLE"
+MetaData_RNA[5,1] <- "SLE"
+MetaData_RNA[6,1] <- "SLE"
+MetaData_RNA[7,1] <- "SLE"
+MetaData_RNA[8,1] <- "SLE"
+MetaData_RNA[9,1] <- "SLE"
+MetaData_RNA[10,1] <- "SLE"
+MetaData_RNA[11,1] <- "SLE"
+MetaData_RNA[12,1] <- "SLE"
+MetaData_RNA[13,1] <- "SLE"
+MetaData_RNA[14,1] <- "SLE"
+MetaData_RNA[15,1] <- "SLE"
+MetaData_RNA[16,1] <- "SLE"
+MetaData_RNA[17,1] <- "SLE"
+MetaData_RNA[18,1] <- "SLE"
+MetaData_RNA[19,1] <- "SLE"
+MetaData_RNA[20,1] <- "SLE"
+MetaData_RNA[21,1] <- "healthy"
+MetaData_RNA[22,1] <- "healthy"
+MetaData_RNA[23,1] <- "healthy"
+MetaData_RNA[24,1] <- "healthy"
+MetaData_RNA[25,1] <- "healthy"
+MetaData_RNA[26,1] <- "healthy"
+
+print(MetaData_RNA)
 ```
 
 ## (Pseudo)Count table
