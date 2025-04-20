@@ -190,5 +190,37 @@ Read in your count data or combine your kallisto output to combine your pseudoco
 
 ```{r}
 
+sample_names <- list.files("quants")
+n <- length(sample_names)
+
+if (n >= 2) {
+  half <- floor(n / 2)
+  cond <- c(rep("control", half), rep("treated", n - half))
+} else {
+  cond <- rep("control", n)
+}
+
+samples <- data.frame(sample = sample_names, condition = cond)
+
+files <- file.path("quants", samples$sample, "abundance.tsv")
+names(files) <- samples$sample
+
+# Mapping transcript → gene
+mart <- useMart("ensembl", dataset = "hsapiens_gene_ensembl")
+tx2gene <- getBM(attributes = c("ensembl_transcript_id", "ensembl_gene_id"), mart = mart)
+colnames(tx2gene) <- c("TXNAME", "GENEID")
+
+# Import kallisto
+txi <- tximport(files, type = "kallisto", tx2gene = tx2gene, ignoreTxVersion = TRUE)
+
+if (length(unique(samples$condition)) > 1) {
+  dds <- DESeqDataSetFromTximport(txi, colData = samples, design = ~ condition)
+} else {
+  dds <- DESeqDataSetFromTximport(txi, colData = samples, design = ~ 1)
+}
+
+counts_raw <- counts(dds)
+write.csv(counts_raw, file = "raw_count_table.csv")
+
 ```
 
